@@ -1,0 +1,12 @@
+.container{
+    background-image: url(../pictures/marqueeHome.jpg);
+    width: 100%;
+    height: calc(100% + 50px);
+    position: fixed;
+    resize: 'stretch';
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    margin: 0;
+    padding:0;
+}
