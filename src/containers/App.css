@@ -1,4 +1,5 @@
 .container{
+    overflow-y: 'scroll';
     background-image: url(../pictures/marqueeHome.jpg);
     width: 100%;
     height: calc(100% + 50px);

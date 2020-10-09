@@ -18,6 +18,7 @@
     "emailjs-com": "^2.6.3",
     "gatsby": "^2.23.12",
     "googleapis": "^39.2.0",
+    "history": "^4.10.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-helmet": "^6.1.0",
