@@ -7,10 +7,13 @@ const URL_SAMPLE = "https://sheets.googleapis.com/v4/spreadsheets/1dzuXRu33dQQWQ
 // 1Snk2U
 const clean = (value) => (value || "").toLowerCase().trim();
 const sampleToHtml = (sample) => { 
-  debugger;
-  return (<div>
-    
-  </div>)
+  return (<tr>
+    <td>{sample.investigator}</td>
+    <td>{sample.intake}</td>
+    <td>{sample.date}</td>
+    <td>{sample.organism}</td>
+    <td>{sample.type}</td>
+  </tr>)
 }
 
 const Main = () => { 
@@ -21,17 +24,20 @@ const Main = () => {
   
   // Fires When User Id Changes
   useEffect(() => { 
-    debugger;
     setMyProjects(projects.filter(v => v.investigatorId === investigatorId));
   }, [investigatorId]);
 
   // Load Data This Only Happens Once
-  useEffect(() => { 
-    axios.all([axios.get(URL_PROJECT), axios.get(URL_SAMPLE)]).then(result => { 
+  useEffect(() => {
+
+    // Load All Data In The Array Below
+    axios.all([
+      axios.get(URL_PROJECT),
+      axios.get(URL_SAMPLE)
+    ]).then(result => { 
 
       // Function To Clean Up Inputs (Remove White Space + LowerCase)
       
-
       // Turn Arrays Into Objects to Make Them Easier To Reason About
       const samples = result[1].data.values
       .filter(v => v.length < 9)
@@ -62,6 +68,7 @@ const Main = () => {
 
      // Save Projects Between Render Calls
      setProjects(projects);
+     
     });
   },[]);
 
@@ -73,16 +80,20 @@ const Main = () => {
             User ID:
             <input
               value={investigatorId}
-              onChange={e => setInvestigatorId("" || e.target.value.trim().toLowerCase())}
+              onChange={e => { setInvestigatorId("" || e.target.value.trim())}}
               type="text" />
           </label>
+          <table style={{visibilty:(myProjects.length>0) ? "visible" : "hidden"}}>
+            <thead>
+              <th>investigator</th>
+            </thead>
           {
             myProjects.map(project => {
-              debugger;
               project.samples.map(sample => sampleToHtml(sample))
             }
             )
           }
+          </table>
           </Fragment>
         ); 
   } 
