@@ -14,7 +14,8 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.20.0",
+    "debounce": "^1.2.0",
     "emailjs-com": "^2.6.3",
     "gatsby": "^2.23.12",
     "googleapis": "^39.2.0",

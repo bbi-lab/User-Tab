@@ -49,11 +49,6 @@ const Main = () => {
   // Fires When User Id Changes
   useEffect(() => { 
     setMyProjects(projects.filter(v => v.UserId === userID));
-    {
-      if(myProjects.length > 0){
-        setCheck(!check);
-      }
-    }
   }, [userID]);
 
   /*useEffect(() => {
