@@ -1,23 +1,10 @@
 import React, {useState, useEffect, Fragment} from "react";
-//import Button from 'react-bootstrap/Button'
 import axios from 'axios';
 import button from 'gatsby';
 
 const URL_PROJECT = "https://sheets.googleapis.com/v4/spreadsheets/1dzuXRu33dQQWQOpTRQK-9AW9Zk-i69ChRyLAU8l2CxE/values/A3:C?key=AIzaSyAbtv9bc79V3WksFnhqpp0jlcHzlfxopF0";
 const URL_SAMPLE = "https://sheets.googleapis.com/v4/spreadsheets/1dzuXRu33dQQWQOpTRQK-9AW9Zk-i69ChRyLAU8l2CxE/values/Sample%20Tracking!A3:AH?key=AIzaSyAbtv9bc79V3WksFnhqpp0jlcHzlfxopF0";
 
-// 1Snk2U
-/*const Button = styled.button`
-padding: 0.4em;
-margin: 0.5em;
-color: ${props => props.inputColor || "white"};
-background: #005587;
-border: none;
-border-radius: 4px;
-font: 400 13px Arial;
-min-width: 95px;
-min-height: 10px;
-`;*/
 
 const clean = (value) => (value || "").trim();
 const sampleToHtml = (sample) => { 
@@ -32,12 +19,7 @@ const sampleToHtml = (sample) => {
     <td className = "boarder">{sample.seqDate}</td>
   </tr>)
 }
-const errorHtml = (sample) =>{
-  console.log(sample);
-  return(
-    <p>This UserID does not exist</p>
-  )
-}
+
 
 const Main = () => { 
 
@@ -49,12 +31,9 @@ const Main = () => {
   // Fires When User Id Changes
   useEffect(() => { 
     setMyProjects(projects.filter(v => v.UserId === userID));
+    setCheck(false);
   }, [userID]);
 
-  /*useEffect(() => {
-    clicked(buttonPress => !buttonPress);
-    console.log(buttonPress);
-  }, [])*/
 
   // Load Data This Only Happens Once
   useEffect(() => {
@@ -66,8 +45,6 @@ const Main = () => {
     ]).then(result => { 
 
       // Function To Clean Up Inputs (Remove White Space + LowerCase)
-      /*
-      */
       // Turn Arrays Into Objects to Make Them Easier To Reason About
       const samples = result[1].data.values
       .map(v => v.map(clean))
@@ -77,9 +54,7 @@ const Main = () => {
         internalId: sample[2],
         investigatorId: sample[3],
         intakeDate: sample[4],
-        //date: sample[5],
         qPCR: sample[29],
-        //tissue: sample[7],
         seqDate: sample[16]
       }));
 
@@ -97,13 +72,11 @@ const Main = () => {
       } ));
 
      // Save Projects Between Render Calls
-     //console.log(projects);  e=> clicked(buttonPress => !buttonPress)
      setProjects(projects);
      
      
     });
   },[]);
-//(myProjects.length > 0)
   return ( 
         <Fragment>
           <div className = "container">
@@ -115,10 +88,16 @@ const Main = () => {
               type="text" />
               
           </label>
-          <button onClick = {console.log("wow")}>submit</button>
+          <button onClick = {() => {setCheck(true);}}>submit</button>
           
       <p/>
-        <table className={(myProjects.length > 0) ? "seeker" : "hider"}>
+      <div className = {(check && !(myProjects.length > 0))? "seeker2" : "hider"}>
+        This user name does not exist
+        <p>
+          If user is forgotten call: 
+        </p>
+      </div>
+        <table className={(check && (myProjects.length > 0)) ? "seeker1" : "hider"}>
           <tbody>
           <tr className = "boarder">
             <td className = "boarder">Project ID </td>
@@ -143,18 +122,5 @@ const Main = () => {
     </Fragment>
         ); 
   } 
- //(myProjects.length > 0  <button onClick={setCheck(!check)} >Submit</button>
- /*const useToggle = (initialState) => {
-    const [isToggled, setIsToggled] = React.useState(initialState);
-  
-    // put [setIsToggled] into the useCallback's dependencies array
-    // this value never changes so the callback is not going to be ever re-created
-    const toggle = React.useCallback(
-      () => setIsToggled(state => !state),
-      [setIsToggled],
-    );
-  
-    return [isToggled, toggle];
-  }
-  const [isToggled, toggle] = useToggle(false);*/
+ 
 export default Main;

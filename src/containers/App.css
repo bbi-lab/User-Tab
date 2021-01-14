@@ -19,11 +19,17 @@
     visibility: hidden;
 }
 
-.seeker{
+.seeker1{
     visibility: visible;
     border: 1px solid black;
     border-collapse: collapse;
 }
+
+.seeker2{
+    visibility: visible;
+}
+
+
 
 .boarder{
     border: 1px solid black;
