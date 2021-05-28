@@ -4,7 +4,7 @@ import { Link } from "gatsby";
 import styled, { css } from 'styled-components';
 import Banner from "../pictures/marqueeHome.png";
 import '../containers/App.css';
-
+/*
 const http = new XMLHttpRequest();
 const male = "lilukmartin@gmail.com";
 var Info1;
@@ -104,4 +104,4 @@ class EmailPage extends React.Component {
             </form>
         );
     }
-}
+}*/

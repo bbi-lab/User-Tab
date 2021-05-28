@@ -35,7 +35,7 @@ const Main = () => {
   }, [userID]);
 
 
-  // Load Data This Only Happens Once
+  // Load Data This Only Happens Once 
   useEffect(() => {
 
     // Load All Data In The Array Below
@@ -58,7 +58,7 @@ const Main = () => {
         seqDate: sample[16]
       }));
 
-      
+      //
       // Turn Arrays Into Objects to Make Them Easier To Reason About
       // Next Samples In Projects To Make Them Easier To Work With
       const projects = result[0].data.values
@@ -94,7 +94,7 @@ const Main = () => {
       <div className = {(check && !(myProjects.length > 0))? "seeker2" : "hider"}>
         This user name does not exist
         <p>
-          If user is forgotten call: 
+          If user is forgotten email: skyhelp@
         </p>
       </div>
         <table className={(check && (myProjects.length > 0)) ? "seeker1" : "hider"}>
