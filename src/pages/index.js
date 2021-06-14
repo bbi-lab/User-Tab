@@ -1,12 +1,12 @@
 import React, {useState, useEffect, Fragment} from "react";
 import axios from 'axios';
 import button from 'gatsby';
-import styled, { css } from 'styled-components';
-import Banner from "../pictures/marqueeHome.png";
+//import styled, { css } from 'styled-components';
+//import Banner from "../pictures/marqueeHome.png";
 import '../containers/App.css';
 
-const URL_PROJECT = "https://sheets.googleapis.com/v4/spreadsheets/1dzuXRu33dQQWQOpTRQK-9AW9Zk-i69ChRyLAU8l2CxE/values/A3:C?key=AIzaSyAbtv9bc79V3WksFnhqpp0jlcHzlfxopF0";
-const URL_SAMPLE = "https://sheets.googleapis.com/v4/spreadsheets/1dzuXRu33dQQWQOpTRQK-9AW9Zk-i69ChRyLAU8l2CxE/values/Sample%20Tracking!A3:AH?key=AIzaSyAbtv9bc79V3WksFnhqpp0jlcHzlfxopF0";
+const URL_PROJECT = "https://sheets.googleapis.com/v4/spreadsheets/1SCGoWHfYlREo6rcirZlnEvbT8WN-gRFBldRLvku1CKg/values/A3:C?key=AIzaSyAbtv9bc79V3WksFnhqpp0jlcHzlfxopF0";
+const URL_SAMPLE = "https://sheets.googleapis.com/v4/spreadsheets/1SCGoWHfYlREo6rcirZlnEvbT8WN-gRFBldRLvku1CKg/values/Sample%20Tracking!A3:AH?key=AIzaSyAbtv9bc79V3WksFnhqpp0jlcHzlfxopF0";
 
 
 const clean = (value) => (value || "").trim();
